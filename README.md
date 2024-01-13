@@ -1,7 +1,46 @@
 # gpt-bridge-chrome-extension
-JavaScript bridge connection point between any page and OpenAI GPTs. It provides a way to create other extensions or use GPTBridge library to interact with GPTs.
+JavaScript bridge connection point between any page and OpenAI GPTs. It provides a way to create other extensions or use BridgeGPT library to interact with GPTs.
 
 ## Concept
+1. Any page is a **consumer** of GPT, and another page contains a page with opened Chat-GPT where questions are asked.
+2. Using the JavaScript library (`BridgeGPT`) injected into any page by Chrome Extension, it can use the method `BridgeGPT.ask()` to communicate with another page with GPT.
+3. For the end user provided a JavaScript accessible method `BridgeGPT.ask()`
+4. Communication between tabs happens in one of the following [ways]().
+5. When asking GPT, optionally you can define a response schema which should be followed by GPT to form a response.
+
+Spec of **BridgeGPT**
+```javascript
+class BridgeGPT {
+   construct (gptUrl: string, responseSchema?: Object);
+   async ask<T>(question: string): Promise<T>;
+}
+```
+
+Example of usage:
+```javascript
+const responseSchema = {
+   "kpis": ["KPI 1", "KPI 2"],
+};
+const gpt = new BridgeGPT('https://chat.openai.com/g/g-bLDsE3HsD-goal-planner'); // or just https://chat.openai.com
+const answer = gpt.ask('Grow on Twitter to 10k in 12 months');
+```
+
+Example of programmatical message in chat GPT:
+```javascript
+const askGPT = (input) => {
+  const inputElement = document.querySelector('#prompt-textarea');
+  const inputEvent = new Event('input', { bubbles: true });
+  inputElement.value = \`${input}\`; // must be escaped backticks to support multiline
+  inputElement.dispatchEvent(inputEvent);
+      
+  const btn = document.querySelector('button[data-testid="send-button"]');
+  btn.focus();
+  btn.disabled = false;
+  btn.click();
+
+  // How to wait for the response finalization and capture it?
+};
+```
 
 ## Tech
 - TypeScript
