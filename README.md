@@ -7,7 +7,7 @@ JavaScript bridge connection point between any page and OpenAI GPTs. It provides
 1. Any page is a **consumer** of GPT, and another page contains a page with opened Chat-GPT where questions are asked.
 2. Using the JavaScript library (`BridgeGPT`) injected into any page by Chrome Extension, it can use the method `BridgeGPT.ask()` to communicate with another page with GPT.
 3. For the end user provided a JavaScript accessible method `BridgeGPT.ask()`
-4. Communication between tabs happens in one of the following [ways]().
+4. Communication between tabs happens in one of the following [ways](https://twitter.com/AndrewRedUK/status/1746142202466627910).
 5. When asking GPT, optionally you can define a response schema which should be followed by GPT to form a response.
 
 Spec of **BridgeGPT**
