@@ -1,4 +1,4 @@
-# gpt-bridge-chrome-extension
+# bridge-gpt-chrome-extension
 JavaScript bridge connection point between any page and OpenAI GPTs. It provides a way to create other extensions or use BridgeGPT library to interact with GPTs.
 
 ![BridgeGPT-logo](https://github.com/maZahaca/BridgeGpt-chrome-extension/assets/1290067/a413f55d-7a27-4fa5-b2d8-8977a5750517)
